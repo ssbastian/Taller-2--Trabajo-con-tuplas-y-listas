@@ -85,10 +85,11 @@ while (op < 7):
             buscar = input('Digite numero de contacto a buscar :')  # Buscar por numero
             for n in lista_contactos:
                 for i in range(len(lista_contactos)):
-
-                    if (list(n)[i+1] == int(buscar)):  # La función List convierte una tupla a una lista
-                        encuentra = True
-                        posicionX = lista_contactos.index(n)
+                  var = tuple(list(n))
+                  print(var[1])
+                  if (int(var[1]) == int(buscar)):  # La función List convierte una tupla a una lista
+                     encuentra = True
+                     posicionX = lista_contactos.index(n)
 
         if (encuentra):
             print('contacto encontrado:  {} Numero {}'.format(lista_contactos[posicionX][0], lista_contactos[posicionX][1]))
