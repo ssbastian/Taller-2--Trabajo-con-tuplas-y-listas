@@ -106,14 +106,14 @@ while (op < 7):
             aux.pop(0)
             aux.insert(0, nombre_contacto)
             lista_contactos[posicion] = tuple(aux)
-            print("Contacto agregado exitosamente")
+            print("Contacto modificado exitosamente")
         else:
             print("contacto no encontrado ")
 
     if (op == 6):
         dato_contacto = False
         posicion = 0 #para guardar indice
-        nombre_contacto = input('Digite nombre de contacto :')
+        nombre_contacto = input('Digite el nombre del contacto :')
 
         for c in lista_contactos:
             if (list(c)[0] == nombre_contacto):
@@ -122,26 +122,28 @@ while (op < 7):
 
         if (dato_contacto):  # contacto existente
             aux = list(lista_contactos[posicion])
-            print (aux)
+            print (aux[1:])
             num = 0
             while (num < 1 or num>=len(aux)): #validar que la pos no sea 0 ni mayor al tamanio de la lista
                 num = int(input('\ndigite la posicion del numero a modificar o eliminar ')) #posicion seleccionar numero
-            print ('\n\tnumero seleccionado "{}" exitosamente: '.format(aux[1]))
-            print('\n1. Modificar ')
-            print('2\n. Eliminar ')
+            print ('\n\tEl numero que usted selecciono es "{}" exitosamente: '.format(aux[1]))
+            print('\t1. Modificar ')
+            print('\t2. Eliminar ')
 
-
-            while (op != 1 or op != 2):
-                op = int(input('Por favor digite 1 o 2..'))
+            while (op < 1 or op > 2):
+                op = int(input('Por favor digite una de las dos opciones.. (modificar o eliminar)'))
             aux.pop(num)
             if(op==1):
-                aux.insert(num, nombre_contacto)
+                numero_contacto = input('Digite el nuevo numero de contacto:')
+                aux.insert(num, numero_contacto)
                 print('Modificcion exitosa')
             else:
-                print('Eliminacion exitosa')
-
+                if(len(aux)>2):
+                    print('Eliminacion exitosa')
+                else:
+                    aux.insert(num, numero_contacto)
+                    print('--no es posible eliminar el numero ya que el contacto solo cuenta con un solo numero')
             lista_contactos[posicion] = tuple(aux)
-            print("Contacto agregado exitosamente")
         else:
             print("contacto no encontrado ")
 
