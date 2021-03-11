@@ -46,11 +46,15 @@ while (op < 7):
             lista_contactos.append(datos_contacto)
 
     if (op == 2):  # eliminar contacto
+        if (len(lista_contactos) == 0):  # validar que halla contactor regis....
+            print("___PRIMERO DEBE REGISTRAR LOS CONTACTOS_______")
+            continue
         nombre_eliminar = input('Digite nombre de contacto :')
         for n in lista_contactos:
             if (list(n)[0] == nombre_eliminar):  # La función List convierte una tupla a una lista
                 lista_contactos.remove(n)
-
+            else:
+                print('Contacto no encontrado ')
     if (op == 3):  # mostrar contacto
         print(' -------- Lista de contactos -------')
         for c in lista_contactos:
@@ -78,15 +82,16 @@ while (op < 7):
                     encuentra = True
                     posicionX = lista_contactos.index(n)
         elif (num == 2):
-            buscar = input('Digite numero de contacto :')  # Buscar por numero
+            buscar = input('Digite numero de contacto a buscar :')  # Buscar por numero
             for n in lista_contactos:
                 for i in range(len(lista_contactos)):
-                    if (list(n)[i + 1] == buscar):  # La función List convierte una tupla a una lista
+
+                    if (list(n)[i+1] == int(buscar)):  # La función List convierte una tupla a una lista
                         encuentra = True
                         posicionX = lista_contactos.index(n)
 
         if (encuentra):
-            print('Nobre contacto {} Numero {}'.format(lista_contactos[posicionX][0], lista_contactos[posicionX][1]))
+            print('contacto encontrado:  {} Numero {}'.format(lista_contactos[posicionX][0], lista_contactos[posicionX][1]))
         else:
             print('Contacto no Existe')
 
